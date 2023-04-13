@@ -36,8 +36,8 @@ const ctx = canvas.getContext("2d");
 ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 
-const file_path = "/images/"
-const frames = 264
+const file_path = "https://tylers-portfolio.github.io/images/"
+const frames = 484
 
 const preloadImages = () => {
   for (let i = 1; i < frames; i++) {
@@ -64,15 +64,21 @@ var ratio  = Math.min ( hRatio, vRatio );
 ctx.drawImage(img, 0,0, img.width, img.height, 0,0,img.width*ratio, img.height*ratio);
 }
 
-function cur_frame(frame){
-if(frame > 200){
-return file_path + "home_anim3 (" + (frame - 200) + ").jpg"
+function pad(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
 }
-else if(frame > 100){
-return file_path + "home_anim2 (" + (frame - 100) + ").jpg"
+
+function cur_frame(frame){
+if(frame > 394){
+return file_path + "anim3/ezgif-frame-" + pad(frame - 394, 3) + ".jpg"
+}
+else if(frame > 198){
+return file_path + "anim2/ezgif-frame-" + pad(frame - 198, 3) + ".jpg"
 }
 else{
-return file_path + "home_anim (" + (frame) + ").jpg"
+return file_path + "anim1/ezgif-frame-" + pad(frame, 3) + ".jpg"
 }
 
 }
