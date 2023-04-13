@@ -82,6 +82,22 @@ return file_path + "anim1/ezgif-frame-" + pad(frame, 3) + ".jpg"
 }
 
 }
+  
+window.addEventListener("resize", () => {
+	ctx.canvas.width  = window.innerHeight * 1.77777777778;
+	ctx.canvas.height = window.innerHeight;
+	
+  const scrollTop = html.scrollTop;
+  const maxScrollTop = html.scrollHeight - window.innerHeight;
+  const scrollFraction = scrollTop / maxScrollTop;
+  const frameIndex = Math.min(
+    frames - 1,
+    Math.ceil(scrollFraction * frames)
+  );
+  
+  requestAnimationFrame(() => updateImage(frameIndex + 1))
+	
+});
 
 window.addEventListener('scroll', () => {  
   const scrollTop = html.scrollTop;
